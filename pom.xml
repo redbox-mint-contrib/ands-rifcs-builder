@@ -26,7 +26,7 @@
 
     <groupId>au.com.redboxresearchdata.rifcs</groupId>
     <artifactId>ands-rifcs-builder</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <name>ands-rifcs-builder</name>
     <properties>
         <java.version>1.7</java.version>

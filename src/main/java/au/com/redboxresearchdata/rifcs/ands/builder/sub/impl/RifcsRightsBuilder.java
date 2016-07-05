@@ -37,22 +37,22 @@ public class RifcsRightsBuilder extends RifcsGenericSubBuilder<Rights> {
     }
 
     public RifcsRightsBuilder accessRights(final Map<String, String> data) throws RIFCSException {
-        accessRights(data.get("value"), data.get("uri"));
+        accessRights(data.get("value"), data.get("uri"), data.get("type"));
         return this;
     }
 
-    public RifcsRightsBuilder accessRights(final String value, final String uri) throws RIFCSException {
-        delegate.setAccessRights(value, uri, null);
+    public RifcsRightsBuilder accessRights(final String value, final String uri, final String type) throws RIFCSException {
+        delegate.setAccessRights(value, uri, type);
         return this;
     }
 
     public RifcsRightsBuilder licence(final Map<String, String> data) throws RIFCSException {
-        licence(data.get("value"), data.get("uri"));
+        licence(data.get("value"), data.get("uri"), data.get("type"));
         return this;
     }
 
-    public RifcsRightsBuilder licence(final String value, final String uri) throws RIFCSException {
-        delegate.setLicence(value, uri, null);
+    public RifcsRightsBuilder licence(final String value, final String uri, final String type) throws RIFCSException {
+        delegate.setLicence(value, uri, type);
         return this;
     }
 
