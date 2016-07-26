@@ -32,7 +32,9 @@ import java.util.Map;
  *         created on 12/05/16.
  */
 public interface RifcsBuilder {
-    RifcsBuilder identifierType(final String identifier, final String identifierType) throws RIFCSException;
+    RifcsBuilder identifier(final String identifier, final String identifierType) throws RIFCSException;
+
+    RifcsBuilder identifier(final Map<String, String> data) throws RIFCSException;
 
     RifcsBuilder primaryName(final String name) throws RIFCSException;
 

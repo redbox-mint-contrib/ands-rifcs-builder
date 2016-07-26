@@ -51,8 +51,14 @@ public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
     }
 
     @Override
-    public RifcsCollectionBuilder identifierType(final String identifier, final String identifierType) throws RIFCSException {
-        coreBuilder.identifierType(identifier, identifierType);
+    public RifcsCollectionBuilder identifier(final String identifier, final String identifierType) throws RIFCSException {
+        coreBuilder.identifier(identifier, identifierType);
+        return this;
+    }
+
+    @Override
+    public RifcsCollectionBuilder identifier(final Map<String, String> data) throws RIFCSException {
+        coreBuilder.identifier(data);
         return this;
     }
 
@@ -75,49 +81,49 @@ public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
     }
 
     @Override
-    public RifcsBuilder relatedObjects(final String key, final List<Map<String, String>> dataList) throws RIFCSException {
+    public RifcsCollectionBuilder relatedObjects(final String key, final List<Map<String, String>> dataList) throws RIFCSException {
         coreBuilder.relatedObjects(key, dataList);
         return this;
     }
 
     @Override
-    public RifcsBuilder subject(final Map data) {
+    public RifcsCollectionBuilder subject(final Map data) {
         coreBuilder.subject(data);
         return this;
     }
 
     @Override
-    public RifcsBuilder subject(final String value, final String type) {
+    public RifcsCollectionBuilder subject(final String value, final String type) {
         coreBuilder.subject(value, type);
         return this;
     }
 
     @Override
-    public RifcsBuilder description(final Map<String, String> data) {
+    public RifcsCollectionBuilder description(final Map<String, String> data) {
         coreBuilder.description(data);
         return this;
     }
 
     @Override
-    public RifcsBuilder description(final String type, final String value) {
+    public RifcsCollectionBuilder description(final String type, final String value) {
         coreBuilder.description(type, value);
         return this;
     }
 
     @Override
-    public RifcsBuilder relatedInfo(final Map data) throws RIFCSException {
+    public RifcsCollectionBuilder relatedInfo(final Map data) throws RIFCSException {
         coreBuilder.relatedInfo(data);
         return this;
     }
 
     @Override
-    public RifcsBuilder fullCitation(final Map data) throws RIFCSException {
+    public RifcsCollectionBuilder fullCitation(final Map data) throws RIFCSException {
         coreBuilder.fullCitation(data);
         return this;
     }
 
     @Override
-    public RifcsBuilder fullCitation(final String citation, final String style) throws RIFCSException {
+    public RifcsCollectionBuilder fullCitation(final String citation, final String style) throws RIFCSException {
         coreBuilder.fullCitation(citation, style);
         return this;
     }

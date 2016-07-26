@@ -67,9 +67,14 @@ public class RifcsCoreBuilder<T extends RIFCSElement> implements RifcsBuilder {
     }
 
     @Override
-    public RifcsCoreBuilder identifierType(final String identifier, final String identifierType) throws RIFCSException {
+    public RifcsCoreBuilder identifier(final String identifier, final String identifierType) throws RIFCSException {
         proxy.addIdentifier(identifier, identifierType);
         return this;
+    }
+
+    @Override
+    public RifcsCoreBuilder identifier(final Map<String, String> data) throws RIFCSException {
+        return identifier(data.get("value"), data.get("type"));
     }
 
     @Override
@@ -111,23 +116,23 @@ public class RifcsCoreBuilder<T extends RIFCSElement> implements RifcsBuilder {
     }
 
     @Override
-    public RifcsBuilder subject(final Map<String, String> data) {
+    public RifcsCoreBuilder subject(final Map<String, String> data) {
         return subject(data.get("type"), data.get("value"));
     }
 
     @Override
-    public RifcsBuilder subject(final String type, final String value) {
+    public RifcsCoreBuilder subject(final String type, final String value) {
         proxy.addSubject(value, type, "en");
         return this;
     }
 
     @Override
-    public RifcsBuilder description(final Map<String, String> data) {
+    public RifcsCoreBuilder description(final Map<String, String> data) {
         return description(data.get("type"), data.get("value"));
     }
 
     @Override
-    public RifcsBuilder description(final String type, final String value) {
+    public RifcsCoreBuilder description(final String type, final String value) {
         proxy.addDescription(value, type, "en");
         return this;
     }
@@ -148,12 +153,12 @@ public class RifcsCoreBuilder<T extends RIFCSElement> implements RifcsBuilder {
     }
 
     @Override
-    public RifcsBuilder fullCitation(final Map<String, String> data) throws RIFCSException {
+    public RifcsCoreBuilder fullCitation(final Map<String, String> data) throws RIFCSException {
         return fullCitation(data.get("citation"), data.get("style"));
     }
 
     @Override
-    public RifcsBuilder fullCitation(final String citation, final String style) throws RIFCSException {
+    public RifcsCoreBuilder fullCitation(final String citation, final String style) throws RIFCSException {
         CitationInfo citationInfo = proxy.newCitationInfo();
         proxy.addCitationInfo(citationInfo);
         citationInfo.setCitation(citation, style);
