@@ -20,8 +20,8 @@
 
 package au.com.redboxresearchdata.rifcs.ands.builder.impl;
 
-import au.com.redboxresearchdata.rifcs.ands.builder.RifcsBuilder;
 import org.ands.rifcs.base.Collection;
+import org.ands.rifcs.base.Dates;
 import org.ands.rifcs.base.RIFCSException;
 import org.ands.rifcs.base.RIFCSWrapper;
 
@@ -34,6 +34,7 @@ import java.util.Map;
  *         created on 12/05/16.
  */
 public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
+    private static final String RIFDateTimeFormat = "W3CDTF";
 
     public RifcsCollectionBuilder(final String key, final String originatingSource, final String group, final String type) throws RIFCSException {
         super(key, originatingSource, group, type);
@@ -45,10 +46,20 @@ public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
         return collection;
     }
 
-    public RifcsCollectionBuilder dateAccessioned(final Date date) {
+
+    public RifcsCollectionBuilder dateAccessioned(final String date) {
         delegate.setDateAccessioned(date);
         return this;
     }
+
+    public RifcsCollectionBuilder dateCreated(final String date) throws RIFCSException {
+        Dates dates = delegate.newDates();
+        dates.setType("dc.created");
+        dates.addDate(date, "dateFrom", RIFDateTimeFormat);
+        delegate.addDates(dates);
+        return this;
+    }
+
 
     @Override
     public RifcsCollectionBuilder identifier(final String identifier, final String identifierType) throws RIFCSException {

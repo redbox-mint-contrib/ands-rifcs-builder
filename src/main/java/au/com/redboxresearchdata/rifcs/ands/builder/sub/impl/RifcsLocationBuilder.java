@@ -34,12 +34,16 @@ public class RifcsLocationBuilder extends RifcsGenericSubBuilder<Location> {
     }
 
     public RifcsLocationBuilder physicalAddress(final String value) throws RIFCSException {
+        return physicalAddress(value, "text");
+    }
+
+    public RifcsLocationBuilder physicalAddress(final String value, final String type) throws RIFCSException {
         Address address = createAddress();
         Physical physical = address.newPhysical();
         address.addPhysical(physical);
         AddressPart addressPart = physical.newAddressPart();
         physical.addAddressPart(addressPart);
-        addressPart.setType("text");
+        addressPart.setType(type);
         addressPart.setValue(value);
         return this;
     }

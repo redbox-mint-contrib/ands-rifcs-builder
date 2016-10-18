@@ -36,12 +36,12 @@ public class RifcsTemporalCoverageBuilder extends RifcsGenericSubBuilder<Coverag
         super(ownerBuilder, coverage);
     }
 
-    public RifcsTemporalCoverageBuilder coverageDateFrom(Date date) throws RIFCSException {
+    public RifcsTemporalCoverageBuilder coverageDateFrom(String date) throws RIFCSException {
         delegate.addTemporalDate(date, "dateFrom");
         return this;
     }
 
-    public RifcsTemporalCoverageBuilder coverageDateTo(Date date) throws RIFCSException {
+    public RifcsTemporalCoverageBuilder coverageDateTo(String date) throws RIFCSException {
         delegate.addTemporalDate(date, "dateTo");
         return this;
     }
