@@ -5,11 +5,17 @@ services:
 before_install:
 - mkdir /tmp/build
 - docker pull qcifengineering/redbox-builder
-- docker run -v /tmp/build:/build -e "CLONEPATH=https://github.com/redbox-mint-contrib/ands-rifcs-builder.git"
-  qcifengineering/redbox-builder /bin/bash -c "cd build;git clone $CLONEPATH src; cd src; mvn --settings /m2_repo/travis-settings.xml -Dmaven.repo.local=/m2_repo clean package"
+- docker run -v /tmp/build:/build -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD"
+  -e "CLONEPATH=https://github.com/redbox-mint-contrib/ands-rifcs-builder.git" qcifengineering/redbox-builder
+  /bin/bash -c "cd build;git clone $CLONEPATH src; cd src; mvn --settings /m2_repo/travis-settings.xml
+  -Dmaven.repo.local=/m2_repo clean package"
 install: true
 script: true
 after_success:
 - docker run -v /tmp/build:/build -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD"
   qcifengineering/redbox-builder /bin/bash -c "cd build/src;mvn --settings /m2_repo/travis-settings.xml
   -Dmaven.repo.local=/m2_repo -DskipTests=true deploy"
+env:
+  global:
+  - secure: YUMdZpESA9+34aGtIH0L1E3knQRdVSoczklx5yU3fUdxd8PfVIv1hwAuM7cYgoEBmaGgxtROJaFkzZ9JJyfXG1Zayvp2z/naSZREbz/PO2LrAB3o0zh+aC/Vc1uPhV7rfL6iFyTFUKAAUVU74SQTZ00S5UHMuv15f8/KgHhMt3E8BsO3CN7Zlms17E9l034iDfmhLUdbDhdzbniDGrCOeSvl2CfgNvH8ibt9tmAY8TU20fZDWdGR3FEfO/xJLNFV1hPvN3JMWV7l4PkgFtRtLGts9oHXqb0iBF7ycyjTWm5bfdAJmnF+5xEKCQnEKmWMnQEYN+6CLTFKNczvQlDsDeJnsDh5uHHizUWzGH+WhaH1zgjzdHyrDZ1QAw12jIzNXmk7gf81l59lLvwAM0YPbhi3WJwP41wV3i/3mLy1iviNMlQ6QeAqTe0X92GjSiocreJ1JSQHzG+/xygXAKItcmdnBRCMS4ij1DsawggOJvQwmSpoAPUcyzJRRTbwgRe+UEMt9Sm3EkK1mBUUAGQ7b0lYyuHc2TVdKAfg1558Y9XIXKUbgWzL4ouFhzh40FwgW05JapNKduxwUItDRZMFZtkcxtnY4KCpPihQTkEK6NuhovS51XMWSh4qI8/yE/pW8dzrQPB3zIZHajtLoCUBeciaP6/O+jLoGVTInVP0ayc=
+  - secure: TaJE+eqeV4goSqpHrLdBfxQokVY6NRllY6LhhKxMgHGcDaBFPNYwzJH8rxGDUGFa+kGMFHp4xctCYf0Hv0cv+RYdN/fFBEwt/mfloAVqauiapGdUZFje3GJg9+Dhi2RJ9afzuihcE3fwKfyxQydrkj0c1GQxZ1PomC7Huy5iyxJfw7AJXxO9t0LdUo9OXRrLBlZPWgVWXZ7OvRH4XErZDiY5XiOn58v+2/JMhZRC9Q44oFDYPf+Ic7LEhbJ/6YK1O8apKdUD8BK9pG32pk2NxdR0ZxakmHk1rcSomGjvaAM3kx/IH69B8xdFi9rlYqEEon6VKt5B6eWk0M0napn6ih4JJehnbU7zG1Qrn1seOhElgZRMZ/fPxGRRihXswj/31FKir2+vPxWdJmlfS3+hZAGbrTbMhCVIJ3XK306r0GLj3EVMmsyBnHMD528fV+q//z83zK9W4y1aNOFTLdk7I8A0tuVSl8+KFvYjHZtP1XcXddwsDMwfgN9Pu61sE0nWnwIC3Ytj39Auno9ADVgQvWxyciX+c27Vn3sKtp2qvoccLe6awy+fHDErzAqL20d4f+GnPVXQTX3A4DJcQvL5pCTaki6jitbE4OjnYZeDPWXY1RwzAdpsMIHmwwZodtOIp42jOMA6x05+oTX1xKcvSSb5kiRLBZmbEeuGDjFiRKA=
