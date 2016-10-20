@@ -40,6 +40,7 @@ public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
         super(key, originatingSource, group, type);
     }
 
+    @Override
     protected Collection init(final String type) throws RIFCSException {
         Collection collection = coreBuilder.getRegistry().newCollection();
         collection.setType(type);
@@ -98,7 +99,7 @@ public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
     }
 
     @Override
-    public RifcsCollectionBuilder subject(final Map data) {
+    public RifcsCollectionBuilder subject(final Map<String, String> data) {
         coreBuilder.subject(data);
         return this;
     }
@@ -122,13 +123,13 @@ public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
     }
 
     @Override
-    public RifcsCollectionBuilder relatedInfo(final Map data) throws RIFCSException {
+    public RifcsCollectionBuilder relatedInfo(final Map<String, String> data) throws RIFCSException {
         coreBuilder.relatedInfo(data);
         return this;
     }
 
     @Override
-    public RifcsCollectionBuilder fullCitation(final Map data) throws RIFCSException {
+    public RifcsCollectionBuilder fullCitation(final Map<String, String> data) throws RIFCSException {
         coreBuilder.fullCitation(data);
         return this;
     }

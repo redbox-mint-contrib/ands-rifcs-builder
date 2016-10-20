@@ -31,11 +31,11 @@ import org.ands.rifcs.base.RIFCSException;
  */
 
 public abstract class RifcsGenericBuilder<T extends RIFCSElement> implements RifcsRegistryBuilder {
-    protected final RifcsCoreBuilder coreBuilder;
+    protected final RifcsCoreBuilder<T> coreBuilder;
     protected final T delegate;
 
     public RifcsGenericBuilder(final String key, final String originatingSource, final String group, final String type) throws RIFCSException {
-        coreBuilder = new RifcsCoreBuilder(key, originatingSource, group);
+        coreBuilder = new RifcsCoreBuilder<>(key, originatingSource, group);
         delegate = init(type);
         coreBuilder.setDelegate(delegate);
     }
