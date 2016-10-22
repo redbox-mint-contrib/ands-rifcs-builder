@@ -49,6 +49,14 @@ public class RifcsLocationBuilder extends RifcsGenericSubBuilder<Location> {
     }
 
     public RifcsLocationBuilder urlElectronicAddress(final String value) throws RIFCSException {
+        return electronicAddress(value, "url");
+    }
+
+    public RifcsLocationBuilder emailElectronicAddress(final String value) throws RIFCSException {
+        return electronicAddress(value, "email");
+    }
+
+    public RifcsLocationBuilder electronicAddress(final String value, final String type) throws RIFCSException {
         Address address = createAddress();
         Electronic electronic = address.newElectronic();
         address.addElectronic(electronic);

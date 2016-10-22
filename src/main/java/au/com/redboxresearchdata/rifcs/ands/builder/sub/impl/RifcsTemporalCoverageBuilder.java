@@ -23,6 +23,7 @@ package au.com.redboxresearchdata.rifcs.ands.builder.sub.impl;
 import au.com.redboxresearchdata.rifcs.ands.builder.RifcsBuilder;
 import org.ands.rifcs.base.Coverage;
 import org.ands.rifcs.base.RIFCSException;
+import org.ands.rifcs.base.Temporal;
 
 import java.util.Date;
 
@@ -37,12 +38,17 @@ public class RifcsTemporalCoverageBuilder extends RifcsGenericSubBuilder<Coverag
     }
 
     public RifcsTemporalCoverageBuilder coverageDateFrom(String date) throws RIFCSException {
-        delegate.addTemporalDate(date, "dateFrom");
-        return this;
+        return coverageDate(date, "dateFrom");
     }
 
     public RifcsTemporalCoverageBuilder coverageDateTo(String date) throws RIFCSException {
-        delegate.addTemporalDate(date, "dateTo");
+        return coverageDate(date, "dateTo");
+    }
+
+    public RifcsTemporalCoverageBuilder coverageDate(String date, String type) throws RIFCSException {
+        Temporal temporal = delegate.newTemporal();
+        delegate.addTemporal(temporal);
+        delegate.addTemporalDate(date, type);
         return this;
     }
 
