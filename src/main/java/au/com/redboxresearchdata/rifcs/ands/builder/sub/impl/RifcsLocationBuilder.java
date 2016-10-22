@@ -60,7 +60,7 @@ public class RifcsLocationBuilder extends RifcsGenericSubBuilder<Location> {
         Address address = createAddress();
         Electronic electronic = address.newElectronic();
         address.addElectronic(electronic);
-        electronic.setType("url");
+        electronic.setType(type);
         electronic.setValue(value);
         return this;
     }
