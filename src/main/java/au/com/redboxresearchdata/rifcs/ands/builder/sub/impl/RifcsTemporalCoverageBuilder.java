@@ -47,8 +47,8 @@ public class RifcsTemporalCoverageBuilder extends RifcsGenericSubBuilder<Coverag
 
     public RifcsTemporalCoverageBuilder coverageDate(String date, String type) throws RIFCSException {
         Temporal temporal = delegate.newTemporal();
+        temporal.addDate(date, type,  "W3CDTF");
         delegate.addTemporal(temporal);
-        delegate.addTemporalDate(date, type);
         return this;
     }
 
