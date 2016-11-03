@@ -63,7 +63,7 @@ public class RifcsCoreBuilder<T extends RIFCSElement> implements RifcsBuilder {
 
     protected void setDelegate(final T delegate) {
         InvocationHandler handler = new RifcsInvocationHandler<>(delegate);
-        proxy = (RifcsProxy) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]{RifcsProxy.class}, handler);
+        proxy = (RifcsProxy) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[]{RifcsProxy.class}, handler);
     }
 
     @Override
