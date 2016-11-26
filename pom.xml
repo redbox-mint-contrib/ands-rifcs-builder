@@ -79,7 +79,7 @@
         <dependency>
             <groupId>org.ands</groupId>
             <artifactId>rifcs</artifactId>
-            <version>0.2-SNAPSHOT</version>
+            <version>0.1</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
