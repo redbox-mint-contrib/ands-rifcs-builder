@@ -126,4 +126,10 @@
             <url>http://dev.redboxresearchdata.com.au/nexus/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
+    <scm>
+	<url>scm:git://github.com/redbox-mint-contrib/ands-rifcs-builder.git</url>
+	<connection>scm:git://github.com/redbox-mint-contrib/ands-rifcs-builder.git</connection>
+	<developerConnection>scm:git:https://github.com/redbox-mint-contrib/ands-rifcs-builder.git</developerConnection>
+	<tag>HEAD</tag>
+   </scm>
 </project>
