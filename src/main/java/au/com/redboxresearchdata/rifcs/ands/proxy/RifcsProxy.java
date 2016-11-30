@@ -37,6 +37,8 @@ public interface RifcsProxy {
 
     void setDateModified(final Date date);
 
+    void setDateModified(final String date);
+
     RelatedObject newRelatedObject() throws RIFCSException;
 
     Coverage newCoverage() throws RIFCSException;

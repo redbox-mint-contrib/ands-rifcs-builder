@@ -96,6 +96,12 @@ public class RifcsCoreBuilder<T extends RIFCSElement> implements RifcsBuilder {
     }
 
     @Override
+    public RifcsCoreBuilder dateModified(final String date) {
+        proxy.setDateModified(date);
+        return this;
+    }
+
+    @Override
     public RifcsCoreBuilder relatedObject(final Map<String, String> data) throws RIFCSException {
         RelatedObject relatedObject = proxy.newRelatedObject();
         proxy.addRelatedObject(relatedObject);

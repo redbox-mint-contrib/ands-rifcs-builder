@@ -87,6 +87,12 @@ public class RifcsCollectionBuilder extends RifcsGenericBuilder<Collection> {
     }
 
     @Override
+    public RifcsCollectionBuilder dateModified(final String date) {
+        coreBuilder.dateModified(date);
+        return this;
+    }
+
+    @Override
     public RifcsCollectionBuilder relatedObject(final Map<String, String> data) throws RIFCSException {
         coreBuilder.relatedObject(data);
         return this;

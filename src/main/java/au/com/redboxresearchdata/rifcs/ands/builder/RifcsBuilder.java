@@ -40,6 +40,8 @@ public interface RifcsBuilder {
 
     RifcsBuilder dateModified(final Date date);
 
+    RifcsBuilder dateModified(final String date);
+
     RifcsBuilder relatedObject(final Map<String, String> relationData) throws RIFCSException;
 
     RifcsBuilder relatedObjects(final String key, final List<Map<String, String>> dataList) throws RIFCSException;
